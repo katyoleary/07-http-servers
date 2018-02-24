@@ -19,20 +19,15 @@ const server = http.createServer(function(req, res) {
       res.writeHead(200, {
         'Content-Type': 'text/plain',
       });
-    
-      res.write(cowsay.say({ text: params.text, f: params.f }));
+      res.write(cowsay.say({ text: params.text }));
+      res.end();
     } else {
       if(!params.text) {
         res.writeHead(400);
         res.write(cowsay.say({ text: 'bad request' }));
+        res.end();
       }
     }
-    res.end();
-  }
-
-  if (req.method === 'GET'){
-    res.write('haiiiiii from mah server!!');
-    res.end();
   }
 
   if (req.method === 'POST' || req.method === 'PUT') {
